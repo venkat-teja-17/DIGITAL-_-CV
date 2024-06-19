@@ -8,5 +8,5 @@
 
 # DIGITAL RESUME
 
-<a href="URL_OF_YOUR_HTML_FILE">Click Here</a>
+<a href="RESUME.pdf">Click Here</a>
 
