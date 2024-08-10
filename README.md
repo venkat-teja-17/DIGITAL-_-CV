@@ -2,7 +2,7 @@
 
 
 
-<a href="http://127.0.0.1:5500/INDEX.HTML">Click Here</a>
+<a href="https://venkat-teja-17.github.io/DIGITAL-_-CV/">Click Here</a>
 
 
 
