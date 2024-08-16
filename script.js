@@ -1,5 +1,3 @@
-// scripts.js
-
 document.addEventListener("DOMContentLoaded", function() {
     // Smooth Scroll
     document.querySelector('nav').addEventListener('click', function(e) {
@@ -23,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
             loadProjectDetails(projectId);
             modal.style.display = "block";
         }
+
+        // Closing the modal when clicking on the close button or outside the modal
         if (e.target === closeModal || e.target === modal) {
             modal.style.display = "none";
         }
@@ -77,4 +77,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 });
-
