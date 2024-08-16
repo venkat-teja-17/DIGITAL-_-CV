@@ -2,7 +2,7 @@
 
 
 
-<a href="https://venkat-teja-17.github.io/DIGITAL-_-CV/">Click Here</a>
+<a href="">Click Here</a>
 
 
 
