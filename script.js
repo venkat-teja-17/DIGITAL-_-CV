@@ -2,40 +2,33 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     // Smooth Scroll
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+    document.querySelector('nav').addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
             e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
+            document.querySelector(e.target.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
-        });
+        }
     });
 
     // Modal Functionality
     const modal = document.getElementById("projectModal");
     const closeModal = document.querySelector(".close");
-    const projectLinks = document.querySelectorAll(".project-link");
 
-    projectLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
+    // Event delegation for project links
+    document.body.addEventListener('click', function(e) {
+        if (e.target.matches('.project-link')) {
             e.preventDefault();
-            const projectId = this.getAttribute("data-project");
+            const projectId = e.target.getAttribute("data-project");
             loadProjectDetails(projectId);
             modal.style.display = "block";
-        });
-    });
-
-    closeModal.onclick = function() {
-        modal.style.display = "none";
-    };
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        }
+        if (e.target === closeModal || e.target === modal) {
             modal.style.display = "none";
         }
-    };
+    });
 
+    // Function to load project details into the modal
     function loadProjectDetails(projectId) {
         const projectDetails = {
             1: {
@@ -62,6 +55,12 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         const project = projectDetails[projectId];
+        
+        if (!project) {
+            document.getElementById("projectDetails").innerHTML = "<p>Project details not found.</p>";
+            return;
+        }
+
         document.getElementById("projectDetails").innerHTML = `
             <h3>${project.title}</h3>
             <p>${project.description}</p>
@@ -70,4 +69,12 @@ document.addEventListener("DOMContentLoaded", function() {
             <p>${project.outcome}</p>
         `;
     }
+
+    // Click outside modal to close it
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
 });
+
